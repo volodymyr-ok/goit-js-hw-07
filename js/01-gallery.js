@@ -35,10 +35,12 @@ galleryEl.addEventListener('click', event => {
 
   instance.show();
 
-  galleryEl.addEventListener('keydown', ({ key }) => {
+  galleryEl.addEventListener('keydown', onEscKey);
+
+  function onEscKey({ key }) {
     if (key !== 'Escape') {
       return;
     }
     instance.close();
-  });
+  }
 });
