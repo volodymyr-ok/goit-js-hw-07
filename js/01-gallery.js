@@ -1,7 +1,7 @@
-import { galleryItems } from "./gallery-items.js";
+import { galleryItems } from './gallery-items.js';
 // Change code below this line
-const getEl = (selector) => document.querySelector(selector);
-const galleryEl = getEl(".gallery");
+const getEl = selector => document.querySelector(selector);
+const galleryEl = getEl('.gallery');
 
 const galleryImages = galleryItems
   .map(({ original, preview, description }) => {
@@ -16,17 +16,17 @@ const galleryImages = galleryItems
   </a>
 </div>`;
   })
-  .join(" ");
-galleryEl.insertAdjacentHTML("beforeend", galleryImages);
+  .join(' ');
+galleryEl.insertAdjacentHTML('beforeend', galleryImages);
 
-galleryEl.addEventListener("click", (event) => {
+galleryEl.addEventListener('click', event => {
   event.preventDefault();
   const {
     nodeName,
     dataset: { source },
   } = event.target;
 
-  if (nodeName !== "IMG") {
+  if (nodeName !== 'IMG') {
     return;
   }
   const instance = basicLightbox.create(`
@@ -34,11 +34,11 @@ galleryEl.addEventListener("click", (event) => {
 `);
 
   instance.show();
-});
 
-galleryEl.addEventListener("keydown", ({ key }) => {
-  if (key !== "Escape") {
-    return;
-  }
-  getEl(".basicLightbox").remove(".basicLightbox--visible");
+  galleryEl.addEventListener('keydown', ({ key }) => {
+    if (key !== 'Escape') {
+      return;
+    }
+    instance.close();
+  });
 });
