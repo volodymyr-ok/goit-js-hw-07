@@ -42,5 +42,6 @@ galleryEl.addEventListener('click', event => {
       return;
     }
     instance.close();
+    galleryEl.removeEventListener('keydown', onEscKey);
   }
 });
